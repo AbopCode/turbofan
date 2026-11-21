@@ -1,0 +1,521 @@
+% ============================================================================
+%  equations.tex -- every key equation of
+%  "The Eigenvalue Map of a Turbofan Engine" as editable LaTeX (no images).
+%
+%  Compile:  pdflatex equations.tex      (article class + amsmath only)
+%  Use:      copy any equation block into the report; each block starts with a
+%            comment line  % [Enn] <what it is>  and carries a \label{eq:...};
+%            Enn is also the equation number printed in the compiled PDF.
+%
+%  Notation (CONTRACT section 2 -- use these symbols everywhere):
+%    N_LP   LP-shaft speed state (rpm);  N_LP = 3.1 N_fan   (code "N2")
+%    N_HP   HP-shaft (core) speed state (rpm)               (code "N3")
+%    N_fan  fan-shaft speed (rpm), behind the 3.1:1 gearbox
+%    x      state vector [N_LP, N_HP]^T        u = W_f  fuel flow (lbm/s)
+%    theta  health parameters (1.0 = healthy)  -- NEVER h
+%    h      finite-difference step ONLY (relative step)
+%    delta  deviation from the operating point: delta x = x - x_0, delta u = u - u_0
+%    F      F(x,u;theta) = dx/dt (rpm/s);  A = dF/dx (1/s);  B = dF/du (rpm/(lbm/s))
+%    lambda eigenvalues of A (1/s);  tau = -1/Re(lambda) time constant (s)
+%    V, kappa(V)  eigenvector matrix (unit 2-norm columns), its 2-norm condition number
+%    tol    tolerance of the inner (flow-matching) Newton solver: max|r_i| < tol
+%    E      perturbation matrix added to A (Bauer-Fike study)
+%  Numeric matrices are left as placeholders (dots); fill them from outputs/tables.
+% ============================================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath}
+% wider text block without any extra package (long equations fit on one line)
+\setlength{\textwidth}{16.5cm}
+\setlength{\oddsidemargin}{-0.3cm}
+\setlength{\evensidemargin}{-0.3cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\title{The Eigenvalue Map of a Turbofan Engine\\ \large Equation sheet (editable \LaTeX)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textbf{Engine.} NASA AGTF30, a \emph{conceptual} 30{,}000~lbf geared turbofan
+(open-source simulation; not a production engine). Units are the English engineering
+units of the source: rpm, lbm/s, ft\,lbf, slug\,ft$^2$.
+
+% ----------------------------------------------------------------------------
+\section{Engine model: two shafts}
+% ----------------------------------------------------------------------------
+
+% [E01] Gear relation between the LP shaft and the fan shaft (gear ratio 3.1)
+\begin{equation}
+  N_{\mathrm{LP}} = 3.1\, N_{\mathrm{fan}}
+  \label{eq:gear}
+\end{equation}
+
+% [E02] Shaft dynamics, LP spool (Newton's second law for rotation; pi/30 converts rpm to rad/s)
+\begin{equation}
+  I_{\mathrm{LP}}\,\frac{\pi}{30}\,\frac{dN_{\mathrm{LP}}}{dt}
+  = Q_{\mathrm{LP}}\!\left(N_{\mathrm{LP}}, N_{\mathrm{HP}}, W_f;\theta\right)
+  \label{eq:shaft-lp}
+\end{equation}
+
+% [E03] Shaft dynamics, HP spool
+\begin{equation}
+  I_{\mathrm{HP}}\,\frac{\pi}{30}\,\frac{dN_{\mathrm{HP}}}{dt}
+  = Q_{\mathrm{HP}}\!\left(N_{\mathrm{LP}}, N_{\mathrm{HP}}, W_f;\theta\right)
+  \label{eq:shaft-hp}
+\end{equation}
+Here $Q_{\mathrm{LP}}$ and $Q_{\mathrm{HP}}$ are the \emph{net} torques on each shaft in
+ft\,lbf (turbine torque minus the torque absorbed by the compressors on that shaft;
+positive net torque accelerates the shaft). $Q_{\mathrm{LP}}$ includes the fan torque
+passed through the gearbox.
+
+% [E04] LP-shaft inertia with the fan inertia reflected through the gear (lbm in^2 -> slug ft^2)
+\begin{equation}
+  I_{\mathrm{LP}} = \frac{1}{32.2 \times 144}
+  \left( \frac{450102}{3.1^{2}} + 17796 + 16237 \right)
+  \approx 17.441\ \text{slug\,ft}^2
+  \label{eq:inertia-lp}
+\end{equation}
+
+% [E05] HP-shaft inertia
+\begin{equation}
+  I_{\mathrm{HP}} = \frac{8627}{32.2 \times 144} \approx 1.8606\ \text{slug\,ft}^2
+  \label{eq:inertia-hp}
+\end{equation}
+
+% [E06] State vector and input
+\begin{equation}
+  x = \begin{bmatrix} N_{\mathrm{LP}} \\ N_{\mathrm{HP}} \end{bmatrix},
+  \qquad u = W_f
+  \label{eq:state}
+\end{equation}
+
+% [E07] Nonlinear state equation dx/dt = F(x,u;theta)
+\begin{equation}
+  \frac{dx}{dt} = F(x,u;\theta)
+  = \begin{bmatrix} F_1(x,u;\theta) \\ F_2(x,u;\theta) \end{bmatrix}
+  = \frac{30}{\pi}
+    \begin{bmatrix}
+      Q_{\mathrm{LP}}(x,u;\theta) / I_{\mathrm{LP}} \\[2pt]
+      Q_{\mathrm{HP}}(x,u;\theta) / I_{\mathrm{HP}}
+    \end{bmatrix}
+  \label{eq:state-equation}
+\end{equation}
+
+% [E08] Inner flow-matching solve: 7 residuals r driven to zero by Newton's method, stopped at tol
+\begin{equation}
+  r(z;\,x,u,\theta) = 0, \qquad \text{stop when } \max_{i=1,\dots,7} |r_i| < \mathrm{tol}
+  \label{eq:inner-solver}
+\end{equation}
+Every evaluation of $F$ contains this inner solve, so $F$ is only known to an
+accuracy set by $\mathrm{tol}$.
+
+% [E09] Health parameters: multipliers on map efficiency and map flow capacity (1 = healthy)
+\begin{equation}
+  \mathrm{Eff} = \mathrm{Eff}_{\mathrm{map}}\; s_{\mathrm{Eff}}\; \theta_{\mathrm{eff}},
+  \qquad
+  W_c = W_{c,\mathrm{map}}\; s_{W_c}\; \theta_{\mathrm{flow}}
+  \label{eq:health}
+\end{equation}
+A ``3\,\% degradation'' means $\theta = 0.97$.
+
+% ----------------------------------------------------------------------------
+\section{Linearization (Taylor series, Jacobians)}
+% ----------------------------------------------------------------------------
+
+% [E10] Equilibrium (operating point): both shafts in torque balance
+\begin{equation}
+  F(x_0,u_0;\theta) = 0
+  \label{eq:equilibrium}
+\end{equation}
+
+% [E11] Deviation variables
+\begin{equation}
+  \delta x = x - x_0, \qquad \delta u = u - u_0
+  \label{eq:deviations}
+\end{equation}
+
+% [E12] First-order Taylor expansion of F about the operating point
+\begin{equation}
+  F(x_0+\delta x,\,u_0+\delta u;\theta)
+  = \underbrace{F(x_0,u_0;\theta)}_{=\,0}
+  + \left.\frac{\partial F}{\partial x}\right|_{(x_0,u_0)} \delta x
+  + \left.\frac{\partial F}{\partial u}\right|_{(x_0,u_0)} \delta u
+  + \mathcal{O}\!\left(\|\delta x\|^{2} + |\delta u|^{2}\right)
+  \label{eq:taylor}
+\end{equation}
+
+% [E13] Jacobian A = dF/dx written element by element (2 x 2, units 1/s)
+\begin{equation}
+  A = \left.\frac{\partial F}{\partial x}\right|_{(x_0,u_0)}
+  = \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}
+  = \begin{bmatrix}
+      \dfrac{\partial F_1}{\partial N_{\mathrm{LP}}} & \dfrac{\partial F_1}{\partial N_{\mathrm{HP}}} \\[10pt]
+      \dfrac{\partial F_2}{\partial N_{\mathrm{LP}}} & \dfrac{\partial F_2}{\partial N_{\mathrm{HP}}}
+    \end{bmatrix}_{(x_0,u_0)}
+  \label{eq:jacobian-a}
+\end{equation}
+
+% [E14] Jacobian B = dF/du written element by element (2 x 1, units rpm/(lbm/s))
+\begin{equation}
+  B = \left.\frac{\partial F}{\partial u}\right|_{(x_0,u_0)}
+  = \begin{bmatrix} b_{1} \\ b_{2} \end{bmatrix}
+  = \begin{bmatrix}
+      \dfrac{\partial F_1}{\partial W_f} \\[10pt]
+      \dfrac{\partial F_2}{\partial W_f}
+    \end{bmatrix}_{(x_0,u_0)}
+  \label{eq:jacobian-b}
+\end{equation}
+
+% [E15] The same Jacobian in terms of torque derivatives (from E07)
+\begin{equation}
+  a_{11} = \frac{30}{\pi I_{\mathrm{LP}}}\frac{\partial Q_{\mathrm{LP}}}{\partial N_{\mathrm{LP}}},\quad
+  a_{12} = \frac{30}{\pi I_{\mathrm{LP}}}\frac{\partial Q_{\mathrm{LP}}}{\partial N_{\mathrm{HP}}},\quad
+  a_{21} = \frac{30}{\pi I_{\mathrm{HP}}}\frac{\partial Q_{\mathrm{HP}}}{\partial N_{\mathrm{LP}}},\quad
+  a_{22} = \frac{30}{\pi I_{\mathrm{HP}}}\frac{\partial Q_{\mathrm{HP}}}{\partial N_{\mathrm{HP}}}
+  \label{eq:jacobian-torque}
+\end{equation}
+
+% [E16] Linear state-space model (valid for small deviations)
+\begin{equation}
+  \frac{d(\delta x)}{dt} = A\,\delta x + B\,\delta u
+  \label{eq:linear-system}
+\end{equation}
+
+% [E17] Placeholder: numeric A and B at one operating point (fill from outputs/tables)
+\begin{equation}
+  A = \begin{bmatrix} \cdots & \cdots \\ \cdots & \cdots \end{bmatrix}\ \mathrm{s}^{-1},
+  \qquad
+  B = \begin{bmatrix} \cdots \\ \cdots \end{bmatrix}\ \frac{\mathrm{rpm}}{\mathrm{lbm/s}}
+  \label{eq:numeric-ab}
+\end{equation}
+
+% ----------------------------------------------------------------------------
+\section{Eigenvalues, stability, time constants}
+% ----------------------------------------------------------------------------
+
+% [E18] Trace and determinant of the 2 x 2 matrix
+\begin{equation}
+  \operatorname{tr}(A) = a_{11} + a_{22}, \qquad \det(A) = a_{11}a_{22} - a_{12}a_{21}
+  \label{eq:trace-det}
+\end{equation}
+
+% [E19] Characteristic equation
+\begin{equation}
+  \det(A - \lambda I) = \lambda^{2} - \operatorname{tr}(A)\,\lambda + \det(A) = 0
+  \label{eq:characteristic}
+\end{equation}
+
+% [E20] Root formula for the two eigenvalues
+\begin{equation}
+  \lambda_{1,2} = \frac{\operatorname{tr}(A) \pm \sqrt{\operatorname{tr}(A)^{2} - 4\det(A)}}{2}
+  \label{eq:eigenvalues}
+\end{equation}
+
+% [E21] Stability conditions for a 2 x 2 system (both eigenvalues in the left half-plane)
+\begin{equation}
+  \operatorname{Re}(\lambda_1) < 0 \ \text{and}\ \operatorname{Re}(\lambda_2) < 0
+  \quad\Longleftrightarrow\quad
+  \operatorname{tr}(A) < 0 \ \text{and}\ \det(A) > 0
+  \label{eq:stability}
+\end{equation}
+
+% [E22] Time constants (tau_slow >= tau_fast)
+\begin{equation}
+  \tau_i = -\frac{1}{\operatorname{Re}(\lambda_i)}, \qquad \tau_{\mathrm{slow}} \ge \tau_{\mathrm{fast}}
+  \label{eq:time-constant}
+\end{equation}
+
+% [E23] Eigenvector of a 2 x 2 matrix for eigenvalue lambda_i (from (A - lambda_i I) v_i = 0)
+\begin{equation}
+  (A - \lambda_i I)\,v_i = 0
+  \quad\Longrightarrow\quad
+  v_i = \begin{bmatrix} a_{12} \\ \lambda_i - a_{11} \end{bmatrix}
+  \ \ (a_{12} \neq 0)
+  \qquad\text{or}\qquad
+  v_i = \begin{bmatrix} \lambda_i - a_{22} \\ a_{21} \end{bmatrix}
+  \ \ (a_{21} \neq 0)
+  \label{eq:eigenvector}
+\end{equation}
+
+% [E24] Eigenvector matrix with unit 2-norm columns
+\begin{equation}
+  V = \begin{bmatrix} \dfrac{v_1}{\|v_1\|_2} & \dfrac{v_2}{\|v_2\|_2} \end{bmatrix}
+  \label{eq:eigenvector-matrix}
+\end{equation}
+
+% ----------------------------------------------------------------------------
+\section{Diagonalization and the matrix exponential}
+% ----------------------------------------------------------------------------
+
+% [E25] Diagonalization (P = eigenvector matrix, D = diagonal matrix of eigenvalues)
+\begin{equation}
+  A = P D P^{-1}, \qquad
+  P = \begin{bmatrix} v_1 & v_2 \end{bmatrix}, \qquad
+  D = \begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix}
+  \label{eq:diagonalization}
+\end{equation}
+
+% [E26] Matrix exponential through the diagonalization
+\begin{equation}
+  e^{At} = P\, e^{Dt}\, P^{-1}, \qquad
+  e^{Dt} = \begin{bmatrix} e^{\lambda_1 t} & 0 \\ 0 & e^{\lambda_2 t} \end{bmatrix}
+  \label{eq:matrix-exponential}
+\end{equation}
+
+% [E27] Inverse of a 2 x 2 matrix
+\begin{equation}
+  A^{-1} = \frac{1}{\det(A)}
+  \begin{bmatrix} a_{22} & -a_{12} \\ -a_{21} & a_{11} \end{bmatrix}
+  \label{eq:inverse}
+\end{equation}
+
+% ----------------------------------------------------------------------------
+\section{Response to a fuel step}
+% ----------------------------------------------------------------------------
+
+% [E28] Step response of the linear model (step delta u at t = 0, delta x(0) = 0)
+\begin{equation}
+  \delta x(t) = A^{-1}\left(e^{At} - I\right) B\,\delta u
+  \label{eq:step-response}
+\end{equation}
+
+% [E29] Steady state reached after the step
+\begin{equation}
+  \delta x_{\mathrm{ss}} = \lim_{t\to\infty} \delta x(t) = -A^{-1} B\,\delta u
+  \label{eq:steady-state}
+\end{equation}
+
+% [E30] Same response written with the eigenvalues (shows the two time constants)
+\begin{equation}
+  \delta x(t) = \left(I - e^{At}\right)\delta x_{\mathrm{ss}}
+  = \delta x_{\mathrm{ss}} - P \begin{bmatrix} e^{\lambda_1 t} & 0 \\ 0 & e^{\lambda_2 t} \end{bmatrix} P^{-1}\,\delta x_{\mathrm{ss}}
+  \label{eq:step-modal}
+\end{equation}
+
+% ----------------------------------------------------------------------------
+\section{Gauss--Seidel iteration for the steady state}
+% ----------------------------------------------------------------------------
+
+% [E31] The 2 x 2 linear system solved iteratively: A dx_ss = -B du
+\begin{equation}
+  A\,\delta x_{\mathrm{ss}} = -B\,\delta u
+  \quad\Longleftrightarrow\quad
+  \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}
+  \begin{bmatrix} \delta N_{\mathrm{LP,ss}} \\ \delta N_{\mathrm{HP,ss}} \end{bmatrix}
+  = \begin{bmatrix} -b_1\,\delta u \\ -b_2\,\delta u \end{bmatrix}
+  \label{eq:gs-system}
+\end{equation}
+
+% [E32] Gauss-Seidel iteration formulas (k = iteration counter; the new LP value is used at once): LP speed
+\begin{align}
+  \delta N_{\mathrm{LP}}^{(k+1)} &= \frac{-b_1\,\delta u - a_{12}\,\delta N_{\mathrm{HP}}^{(k)}}{a_{11}}
+  \label{eq:gs-lp} \\[4pt]
+% [E33] Gauss-Seidel update of the HP speed (second row of the same iteration)
+  \delta N_{\mathrm{HP}}^{(k+1)} &= \frac{-b_2\,\delta u - a_{21}\,\delta N_{\mathrm{LP}}^{(k+1)}}{a_{22}}
+  \label{eq:gs-hp}
+\end{align}
+
+% [E34] Gauss-Seidel iteration matrix for the 2 x 2 case (A = L + D_A + U; error e^(k+1) = T_GS e^(k))
+\begin{equation}
+  T_{\mathrm{GS}} = -\begin{bmatrix} a_{11} & 0 \\ a_{21} & a_{22} \end{bmatrix}^{-1}
+                     \begin{bmatrix} 0 & a_{12} \\ 0 & 0 \end{bmatrix}
+  = \begin{bmatrix} 0 & -\dfrac{a_{12}}{a_{11}} \\[10pt] 0 & \dfrac{a_{12}a_{21}}{a_{11}a_{22}} \end{bmatrix}
+  \label{eq:gs-matrix}
+\end{equation}
+
+% [E35] Spectral radius of the iteration matrix; the iteration converges if and only if it is < 1
+\begin{equation}
+  \rho(T_{\mathrm{GS}}) = \left| \frac{a_{12}\,a_{21}}{a_{11}\,a_{22}} \right| < 1
+  \label{eq:gs-radius}
+\end{equation}
+
+% [E36] Strict (row) diagonal dominance: a sufficient condition for convergence
+\begin{equation}
+  |a_{11}| > |a_{12}| \quad\text{and}\quad |a_{22}| > |a_{21}|
+  \label{eq:diag-dominance}
+\end{equation}
+
+% [E37] Stopping rule of the Gauss-Seidel loop (eps_GS is its own tolerance, NOT the solver tol)
+\begin{equation}
+  \left\| \delta x^{(k+1)} - \delta x^{(k)} \right\|_{\infty} < \varepsilon_{\mathrm{GS}}
+  \label{eq:gs-stop}
+\end{equation}
+
+% ----------------------------------------------------------------------------
+\section{Finite-difference Jacobians and their error}
+% ----------------------------------------------------------------------------
+The step $h$ is \emph{relative}: state $j$ is perturbed by $h\,|x_{0,j}|$ and the fuel
+flow by $h\,|u_0|$; $e_j$ is the $j$-th unit vector.
+
+% [E38] Forward difference for column j of A (first-order accurate)
+\begin{equation}
+  \frac{\partial F}{\partial x_j} \approx
+  \frac{F\!\left(x_0 + h|x_{0,j}|\,e_j,\;u_0\right) - F\!\left(x_0,u_0\right)}{h\,|x_{0,j}|}
+  \label{eq:fd-forward}
+\end{equation}
+
+% [E39] Central difference for column j of A (second-order accurate)
+\begin{equation}
+  \frac{\partial F}{\partial x_j} \approx
+  \frac{F\!\left(x_0 + h|x_{0,j}|\,e_j,\;u_0\right) - F\!\left(x_0 - h|x_{0,j}|\,e_j,\;u_0\right)}{2h\,|x_{0,j}|}
+  \label{eq:fd-central}
+\end{equation}
+
+% [E40] Forward and central difference for B (perturb the fuel flow)
+\begin{equation}
+  B \approx \frac{F\!\left(x_0,\,u_0 + h|u_0|\right) - F\!\left(x_0,u_0\right)}{h\,|u_0|},
+  \qquad
+  B \approx \frac{F\!\left(x_0,\,u_0 + h|u_0|\right) - F\!\left(x_0,\,u_0 - h|u_0|\right)}{2h\,|u_0|}
+  \label{eq:fd-b}
+\end{equation}
+
+For the error formulas take one scalar function $f$ of one scaled variable, so that the
+step is exactly $h$.
+
+% [E41] Forward difference with its truncation term (Taylor series with remainder)
+\begin{equation}
+  f'(x) = \frac{f(x+h) - f(x)}{h} - \frac{h}{2}\,f''(\xi), \qquad \xi \in (x,\,x+h)
+  \label{eq:fd-forward-truncation}
+\end{equation}
+
+% [E42] Central difference with its truncation term
+\begin{equation}
+  f'(x) = \frac{f(x+h) - f(x-h)}{2h} - \frac{h^{2}}{6}\,f'''(\xi), \qquad \xi \in (x-h,\,x+h)
+  \label{eq:fd-central-truncation}
+\end{equation}
+
+% [E43] Total error model, forward difference
+%       eps = error of ONE evaluation of f (round-off, or here the inner-solver error set by tol)
+%       M2  = bound on |f''|.   Two evaluations, each wrong by up to eps, give the 2 eps / h term.
+\begin{equation}
+  E_{\mathrm{fwd}}(h) \le \frac{2\varepsilon}{h} + \frac{M_2}{2}\,h
+  \label{eq:error-forward}
+\end{equation}
+
+% [E44] Optimal step, forward difference (set dE/dh = 0)
+\begin{equation}
+  h^{*}_{\mathrm{fwd}} = 2\sqrt{\frac{\varepsilon}{M_2}},
+  \qquad E_{\mathrm{fwd}}(h^{*}_{\mathrm{fwd}}) = 2\sqrt{\varepsilon M_2}
+  \label{eq:h-opt-forward}
+\end{equation}
+
+% [E45] Total error model, central difference (M3 = bound on |f'''|)
+\begin{equation}
+  E_{\mathrm{cen}}(h) \le \frac{\varepsilon}{h} + \frac{M_3}{6}\,h^{2}
+  \label{eq:error-central}
+\end{equation}
+
+% [E46] Optimal step, central difference
+\begin{equation}
+  h^{*}_{\mathrm{cen}} = \left(\frac{3\varepsilon}{M_3}\right)^{1/3}
+  \label{eq:h-opt-central}
+\end{equation}
+
+% [E47] Richardson extrapolation of the central difference D(h): cancels the h^2 error term
+\begin{equation}
+  D(h) = \frac{f(x+h) - f(x-h)}{2h}, \qquad
+  D_{R}(h) = \frac{4\,D(h/2) - D(h)}{3} = f'(x) + \mathcal{O}(h^{4})
+  \label{eq:richardson}
+\end{equation}
+
+% [E48] Richardson, general level k (D_0 = D), and the error estimate that comes for free
+\begin{equation}
+  D_{k}(h) = \frac{4^{k} D_{k-1}(h/2) - D_{k-1}(h)}{4^{k} - 1},
+  \qquad
+  \text{error estimate} \approx \left| D_{k}(h) - D_{k-1}(h/2) \right|
+  \label{eq:richardson-general}
+\end{equation}
+
+% [E49] Complex-step derivative (no subtraction, so no cancellation; analytic test functions only)
+\begin{equation}
+  f'(x) \approx \frac{\operatorname{Im}\left[f(x + \mathrm{i}h)\right]}{h},
+  \qquad \text{error } \mathcal{O}(h^{2}), \qquad \mathrm{i} = \sqrt{-1}
+  \label{eq:complex-step}
+\end{equation}
+
+% [E50] Relative eigenvalue error of a finite-difference Jacobian against the reference Jacobian
+\begin{equation}
+  e_{\mathrm{rel}}(h,\mathrm{tol}) =
+  \frac{\left| \lambda_{\mathrm{FD}}(h,\mathrm{tol}) - \lambda_{\mathrm{ref}} \right|}{\left| \lambda_{\mathrm{ref}} \right|}
+  \label{eq:relative-error}
+\end{equation}
+
+% ----------------------------------------------------------------------------
+\section{Conditioning of the eigenvalues}
+% ----------------------------------------------------------------------------
+
+% [E51] Normalized-state similarity transform (states as fractions of the operating speeds).
+%       NOTE: in THIS equation D = diag(x_0) is the scaling matrix (CONTRACT notation); it is
+%       not the eigenvalue matrix D of E25. Rename one of them (e.g. D_x) if both appear together.
+\begin{equation}
+  A_n = D^{-1} A\, D, \qquad
+  D = \operatorname{diag}(x_0) = \begin{bmatrix} N_{\mathrm{LP},0} & 0 \\ 0 & N_{\mathrm{HP},0} \end{bmatrix}
+  \label{eq:normalized}
+\end{equation}
+
+% [E52] The same transform element by element: eigenvalues unchanged, eigenvectors (and kappa) changed
+\begin{equation}
+  A_n = \begin{bmatrix}
+      a_{11} & a_{12}\,\dfrac{N_{\mathrm{HP},0}}{N_{\mathrm{LP},0}} \\[10pt]
+      a_{21}\,\dfrac{N_{\mathrm{LP},0}}{N_{\mathrm{HP},0}} & a_{22}
+    \end{bmatrix},
+  \qquad \lambda(A_n) = \lambda(A)
+  \label{eq:normalized-elements}
+\end{equation}
+
+% [E53] 2-norm condition number of the eigenvector matrix (sigma = singular values of V)
+\begin{equation}
+  \kappa(V) = \|V\|_2\,\|V^{-1}\|_2 = \frac{\sigma_{\max}(V)}{\sigma_{\min}(V)} \ \ge 1
+  \label{eq:kappa}
+\end{equation}
+
+% [E54] Bauer-Fike theorem: A = V diag(lambda_j) V^{-1}; mu = any eigenvalue of A + E
+\begin{equation}
+  \min_{j}\,\left| \mu - \lambda_j \right| \;\le\; \kappa(V)\,\|E\|_2
+  \label{eq:bauer-fike}
+\end{equation}
+
+% [E55] Observed eigenvalue shift compared with the bound (mu_i = eigenvalues of A + E)
+\begin{equation}
+  \max_{i}\,\min_{j}\,\left| \mu_i - \lambda_j \right| \;\le\; \kappa(V)\,\|E\|_2
+  \label{eq:eig-shift}
+\end{equation}
+
+% [E56] Eigenvalue sensitivity to a health parameter theta.
+%       v_i = right eigenvector (A v_i = lambda_i v_i), y_i = left eigenvector (y_i^H A = lambda_i y_i^H).
+%       Textbooks often write x for the right eigenvector; here x is reserved for the state vector.
+\begin{equation}
+  \frac{d\lambda_i}{d\theta} =
+  \frac{y_i^{H}\,\dfrac{\partial A}{\partial \theta}\,v_i}{y_i^{H}\,v_i}
+  \label{eq:eig-sensitivity}
+\end{equation}
+
+% ----------------------------------------------------------------------------
+\section{Degradation study: two comparison rules}
+% ----------------------------------------------------------------------------
+A degraded engine ($\theta \neq 1$) settles at a different operating point, so
+``healthy versus degraded'' needs a rule saying what is held equal.
+
+% [E57] Rule 1 -- same fuel flow: W_f fixed, the speeds are free to move
+\begin{equation}
+  u_0(\theta) = u_0(1), \qquad F\!\left(x_0(\theta),\,u_0(1);\,\theta\right) = 0
+  \label{eq:rule-same-fuel}
+\end{equation}
+
+% [E58] Rule 2 -- same fan speed: W_f is re-solved so that the fan speed is unchanged
+%       (at a fixed flight condition, equal N_fan also means equal corrected fan speed)
+\begin{equation}
+  N_{\mathrm{fan},0}(\theta) = N_{\mathrm{fan},0}(1), \qquad
+  F\!\left(x_0(\theta),\,u_0(\theta);\,\theta\right) = 0
+  \label{eq:rule-same-fan-speed}
+\end{equation}
+
+% [E59] Eigenvalue change reported under either rule (A evaluated at that rule's operating point)
+\begin{equation}
+  \Delta\lambda_i(\theta) = \lambda_i\!\left(A\big(x_0(\theta),u_0(\theta);\theta\big)\right)
+                          - \lambda_i\!\left(A\big(x_0(1),u_0(1);1\big)\right)
+  \label{eq:delta-lambda}
+\end{equation}
+
+\end{document}

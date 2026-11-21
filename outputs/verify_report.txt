@@ -1,0 +1,538 @@
+VERIFICATION TABLE  (source: outputs/data/*.json + test modules)
+
+module             | check                                                          |                          value |                          limit | result
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+tests              | tests.test_mathcore                                            | exit 0, 68 PASS / 0 FAIL lines |                         exit 0 | PASS
+tests              | tests.test_anchors                                             | exit 0, 38 PASS / 0 FAIL lines |                         exit 0 | PASS
+tests              | tests.test_engine                                              | exit 0, 23 PASS / 0 FAIL lines |                         exit 0 | PASS
+tests              | tests.test_lab                                                 | exit 0, 26 PASS / 0 FAIL lines |                         exit 0 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: eigenvalues -0... |                    0.000143594 |                          0.002 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: tau_slow 2.888... |                     0.00102554 |                          0.002 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: tau_fast 2.674... |                     0.00482376 | 0.005 (printed rounding; co... | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: kappa(V) 18.87... |                     0.00134391 |                           0.01 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: own eig2x2 vs ... |                    5.55112e-17 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: own kappa2 vs ... |                    3.38809e-15 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: own diagonaliz... |                    5.55112e-17 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: stable (tr < 0... |                      -0.346144 |                            < 0 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: own step_respo... |                    1.13243e-14 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle: own steady_gai... |                    2.22045e-16 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: eigenvalues -0.... |                    0.000174762 |                          0.002 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: tau_slow 1.6689... |                     0.00103785 |                          0.002 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: tau_fast 1.1225... |                     0.00255464 | 0.005 (printed rounding; co... | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: kappa(V) 2.3929... |                     0.00120261 |                           0.01 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: own eig2x2 vs n... |                              0 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: own kappa2 vs n... |                    1.85588e-16 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: own diagonaliza... |                    1.11022e-16 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: stable (tr < 0,... |                      -0.599175 |                            < 0 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: own step_respon... |                    7.32747e-15 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): mid: own steady_gain... |                              0 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: eigenvalues ... |                    0.000298335 |                          0.002 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: tau_slow 0.9... |                     0.00254236 | 0.005 (printed rounding; co... | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: tau_fast 0.5... |                    0.000496317 |                          0.002 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: kappa(V) 1.8... |                     0.00231777 |                           0.01 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: own eig2x2 v... |                              0 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: own kappa2 v... |                    2.41914e-16 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: own diagonal... |                    1.11022e-16 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: stable (tr <... |                        -1.0127 |                            < 0 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: own step_res... |                    5.44009e-15 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise: own steady_g... |                    1.11022e-16 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Gauss-Seidel cruise,... |                     4.0107e-06 |                          5e-06 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Gauss-Seidel cruise,... |                    3.76534e-06 |                          5e-06 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Gauss-Seidel cruise,... |                    4.79897e-06 |                          5e-06 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Gauss-Seidel cruise,... |                    4.96681e-06 |                          5e-06 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Gauss-Seidel cruise,... |                    3.64641e-06 |                          5e-06 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise unit-fuel-ste... |                    0.000441989 |                          0.002 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Gauss-Seidel spectra... |                    8.55615e-05 |                          0.002 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Gauss-Seidel observe... |                    8.18789e-16 |                          1e-06 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Gauss-Seidel converg... |                    1.39944e-12 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): own gs_spectral_radi... |                    6.93889e-18 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): cruise matrix is str... |                           true |                           true | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle as printed has ... |                       0.000768 |                            > 0 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): idle with a12 -0.000... |                      -0.000272 |                            < 0 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): flipped pair real pa... |                              0 |                          0.002 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): flipped pair imagina... |                    0.000246211 |                         0.0005 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): flipped pair: own ei... |                    6.93889e-18 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                    8.88178e-16 |                          1e-12 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                    2.22045e-16 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                       0.856742 |                              1 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                      0.0106667 |                           0.15 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                     0.00777481 |                           0.15 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                        13.5811 |              between 10 and 16 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                    6.66134e-16 |                          1e-12 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                    2.22045e-16 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                       0.856117 |                              1 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                     0.00992895 |                           0.15 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                     0.00783217 |                           0.15 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                         13.572 |              between 10 and 16 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                    6.66134e-16 |                          1e-12 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                    2.22045e-16 |                          1e-08 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                       0.855984 |                              1 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                     0.00977244 |                           0.15 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                     0.00783219 |                           0.15 | PASS
+anchors            | turboshaft JetCat SPT5 (illustration): Monte Carlo seed 202... |                        13.5699 |              between 10 and 16 | PASS
+layer1_opmap       | SLS_00 steady residual (max|r|, |dN/dt|/N)                     |                     7.5264e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_00 reference Jacobian self-consistent (two step sizes, ... |                     3.4819e-09 |                          1e-06 | PASS
+layer1_opmap       | SLS_00 own 2x2 eigenvalues vs numpy (rel)                      |                    1.46265e-16 |                          1e-08 | PASS
+layer1_opmap       | SLS_00 diagonal of A negative and stable (max of a11, a22, ... |                        -1.2438 |                              0 | PASS
+layer1_opmap       | SLS_01 steady residual (max|r|, |dN/dt|/N)                     |                    9.20694e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_01 reference Jacobian self-consistent (two step sizes, ... |                    3.75087e-08 |                          1e-06 | PASS
+layer1_opmap       | SLS_01 own 2x2 eigenvalues vs numpy (rel)                      |                    6.63072e-17 |                          1e-08 | PASS
+layer1_opmap       | SLS_01 diagonal of A negative and stable (max of a11, a22, ... |                        -1.3438 |                              0 | PASS
+layer1_opmap       | SLS_02 steady residual (max|r|, |dN/dt|/N)                     |                    7.27857e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_02 reference Jacobian self-consistent (two step sizes, ... |                    3.99446e-09 |                          1e-06 | PASS
+layer1_opmap       | SLS_02 own 2x2 eigenvalues vs numpy (rel)                      |                    1.33604e-16 |                          1e-08 | PASS
+layer1_opmap       | SLS_02 diagonal of A negative and stable (max of a11, a22, ... |                       -1.41723 |                              0 | PASS
+layer1_opmap       | SLS_03 steady residual (max|r|, |dN/dt|/N)                     |                    4.34007e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_03 reference Jacobian self-consistent (two step sizes, ... |                    8.84663e-09 |                          1e-06 | PASS
+layer1_opmap       | SLS_03 own 2x2 eigenvalues vs numpy (rel)                      |                    1.25634e-16 |                          1e-08 | PASS
+layer1_opmap       | SLS_03 diagonal of A negative and stable (max of a11, a22, ... |                       -1.49154 |                              0 | PASS
+layer1_opmap       | SLS_04 steady residual (max|r|, |dN/dt|/N)                     |                      4.499e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_04 reference Jacobian self-consistent (two step sizes, ... |                    1.79427e-08 |                          1e-06 | PASS
+layer1_opmap       | SLS_04 own 2x2 eigenvalues vs numpy (rel)                      |                              0 |                          1e-08 | PASS
+layer1_opmap       | SLS_04 diagonal of A negative and stable (max of a11, a22, ... |                       -1.63585 |                              0 | PASS
+layer1_opmap       | SLS_05 steady residual (max|r|, |dN/dt|/N)                     |                    4.38421e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_05 reference Jacobian self-consistent (two step sizes, ... |                    6.44868e-09 |                          1e-06 | PASS
+layer1_opmap       | SLS_05 own 2x2 eigenvalues vs numpy (rel)                      |                              0 |                          1e-08 | PASS
+layer1_opmap       | SLS_05 diagonal of A negative and stable (max of a11, a22, ... |                       -1.83616 |                              0 | PASS
+layer1_opmap       | SLS_06 steady residual (max|r|, |dN/dt|/N)                     |                    5.76214e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_06 reference Jacobian self-consistent (two step sizes, ... |                    7.51946e-09 |                          1e-06 | PASS
+layer1_opmap       | SLS_06 own 2x2 eigenvalues vs numpy (rel)                      |                              0 |                          1e-08 | PASS
+layer1_opmap       | SLS_06 diagonal of A negative and stable (max of a11, a22, ... |                       -2.02553 |                              0 | PASS
+layer1_opmap       | SLS_07 steady residual (max|r|, |dN/dt|/N)                     |                    6.64537e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_07 reference Jacobian self-consistent (two step sizes, ... |                    8.04914e-09 |                          1e-06 | PASS
+layer1_opmap       | SLS_07 own 2x2 eigenvalues vs numpy (rel)                      |                              0 |                          1e-08 | PASS
+layer1_opmap       | SLS_07 diagonal of A negative and stable (max of a11, a22, ... |                       -2.25314 |                              0 | PASS
+layer1_opmap       | SLS_08 steady residual (max|r|, |dN/dt|/N)                     |                    4.14485e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_08 reference Jacobian self-consistent (two step sizes, ... |                    1.98156e-08 |                          1e-06 | PASS
+layer1_opmap       | SLS_08 own 2x2 eigenvalues vs numpy (rel)                      |                    8.30309e-17 |                          1e-08 | PASS
+layer1_opmap       | SLS_08 diagonal of A negative and stable (max of a11, a22, ... |                       -2.51177 |                              0 | PASS
+layer1_opmap       | SLS_09 steady residual (max|r|, |dN/dt|/N)                     |                    3.19147e-14 |                          1e-08 | PASS
+layer1_opmap       | SLS_09 reference Jacobian self-consistent (two step sizes, ... |                    4.72105e-09 |                          1e-06 | PASS
+layer1_opmap       | SLS_09 own 2x2 eigenvalues vs numpy (rel)                      |                              0 |                          1e-08 | PASS
+layer1_opmap       | SLS_09 diagonal of A negative and stable (max of a11, a22, ... |                       -2.79424 |                              0 | PASS
+layer1_opmap       | CRUISE_00 steady residual (max|r|, |dN/dt|/N)                  |                    8.54328e-14 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_00 reference Jacobian self-consistent (two step size... |                    2.32363e-08 |                          1e-06 | PASS
+layer1_opmap       | CRUISE_00 own 2x2 eigenvalues vs numpy (rel)                   |                    4.65628e-17 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_00 diagonal of A negative and stable (max of a11, a2... |                      -0.333872 |                              0 | PASS
+layer1_opmap       | CRUISE_01 steady residual (max|r|, |dN/dt|/N)                  |                    7.18423e-14 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_01 reference Jacobian self-consistent (two step size... |                    2.79757e-08 |                          1e-06 | PASS
+layer1_opmap       | CRUISE_01 own 2x2 eigenvalues vs numpy (rel)                   |                    1.43459e-16 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_01 diagonal of A negative and stable (max of a11, a2... |                      -0.557029 |                              0 | PASS
+layer1_opmap       | CRUISE_02 steady residual (max|r|, |dN/dt|/N)                  |                    4.71588e-14 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_02 reference Jacobian self-consistent (two step size... |                    2.17885e-09 |                          1e-06 | PASS
+layer1_opmap       | CRUISE_02 own 2x2 eigenvalues vs numpy (rel)                   |                    1.26303e-16 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_02 diagonal of A negative and stable (max of a11, a2... |                      -0.670276 |                              0 | PASS
+layer1_opmap       | CRUISE_03 steady residual (max|r|, |dN/dt|/N)                  |                    3.25139e-15 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_03 reference Jacobian self-consistent (two step size... |                    7.74853e-09 |                          1e-06 | PASS
+layer1_opmap       | CRUISE_03 own 2x2 eigenvalues vs numpy (rel)                   |                    1.01529e-16 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_03 diagonal of A negative and stable (max of a11, a2... |                      -0.818372 |                              0 | PASS
+layer1_opmap       | CRUISE_04 steady residual (max|r|, |dN/dt|/N)                  |                    1.01051e-14 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_04 reference Jacobian self-consistent (two step size... |                    8.10615e-09 |                          1e-06 | PASS
+layer1_opmap       | CRUISE_04 own 2x2 eigenvalues vs numpy (rel)                   |                    7.89171e-17 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_04 diagonal of A negative and stable (max of a11, a2... |                       -1.00238 |                              0 | PASS
+layer1_opmap       | CRUISE_05 steady residual (max|r|, |dN/dt|/N)                  |                    1.11259e-14 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_05 reference Jacobian self-consistent (two step size... |                    5.57296e-09 |                          1e-06 | PASS
+layer1_opmap       | CRUISE_05 own 2x2 eigenvalues vs numpy (rel)                   |                    1.39703e-16 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_05 diagonal of A negative and stable (max of a11, a2... |                       -1.19182 |                              0 | PASS
+layer1_opmap       | CRUISE_06 steady residual (max|r|, |dN/dt|/N)                  |                    9.71815e-15 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_06 reference Jacobian self-consistent (two step size... |                    6.69933e-09 |                          1e-06 | PASS
+layer1_opmap       | CRUISE_06 own 2x2 eigenvalues vs numpy (rel)                   |                              0 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_06 diagonal of A negative and stable (max of a11, a2... |                       -1.44212 |                              0 | PASS
+layer1_opmap       | CRUISE_07 steady residual (max|r|, |dN/dt|/N)                  |                    5.67075e-15 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_07 reference Jacobian self-consistent (two step size... |                    2.10618e-08 |                          1e-06 | PASS
+layer1_opmap       | CRUISE_07 own 2x2 eigenvalues vs numpy (rel)                   |                    1.97392e-17 |                          1e-08 | PASS
+layer1_opmap       | CRUISE_07 diagonal of A negative and stable (max of a11, a2... |                        -1.0968 |                              0 | PASS
+layer1_opmap       | ANCHOR_CRUISE steady residual (max|r|, |dN/dt|/N)              |                    1.27579e-14 |                          1e-08 | PASS
+layer1_opmap       | ANCHOR_CRUISE reference Jacobian self-consistent (two step ... |                     2.6202e-08 |                          1e-06 | PASS
+layer1_opmap       | ANCHOR_CRUISE own 2x2 eigenvalues vs numpy (rel)               |                    1.58615e-16 |                          1e-08 | PASS
+layer1_opmap       | ANCHOR_CRUISE diagonal of A negative and stable (max of a11... |                       -1.10478 |                              0 | PASS
+layer1_opmap       | ANCHOR_TAKEOFF steady residual (max|r|, |dN/dt|/N)             |                    1.04702e-14 |                          1e-08 | PASS
+layer1_opmap       | ANCHOR_TAKEOFF reference Jacobian self-consistent (two step... |                    4.12885e-09 |                          1e-06 | PASS
+layer1_opmap       | ANCHOR_TAKEOFF own 2x2 eigenvalues vs numpy (rel)              |                     7.8061e-17 |                          1e-08 | PASS
+layer1_opmap       | ANCHOR_TAKEOFF diagonal of A negative and stable (max of a1... |                       -2.73275 |                              0 | PASS
+layer1_opmap       | number of SLS power settings (ground idle .. max)              |                             10 |                              8 | PASS
+layer2_fd          | SLS_00 reference eigenvalues vs plain central h=1e-6 at tol... |                    5.29756e-09 |                          1e-06 | PASS
+layer2_fd          | SLS_00 tol 1e-06: forward-difference error has an interior ... |                        5592.34 |                             10 | PASS
+layer2_fd          | SLS_00 tol 0.0001: forward-difference error has an interior... |                        105.262 |                             10 | PASS
+layer2_fd          | CRUISE_00 reference eigenvalues vs plain central h=1e-6 at ... |                    3.81605e-09 |                          1e-06 | PASS
+layer2_fd          | CRUISE_00 tol 1e-06: forward-difference error has an interi... |                          37490 |                             10 | PASS
+layer2_fd          | CRUISE_00 tol 0.0001: forward-difference error has an inter... |                        374.364 |                             10 | PASS
+layer2_fd          | CRUISE_07 reference eigenvalues vs plain central h=1e-6 at ... |                    1.52904e-08 |                          1e-06 | PASS
+layer2_fd          | CRUISE_07 tol 1e-06: forward-difference error has an interi... |                        9845.59 |                             10 | PASS
+layer2_fd          | CRUISE_07 tol 0.0001: forward-difference error has an inter... |                        97.1281 |                             10 | PASS
+layer2_fd          | SLS_09 reference eigenvalues vs plain central h=1e-6 at tol... |                    3.76584e-09 |                          1e-06 | PASS
+layer2_fd          | SLS_09 tol 1e-06: forward-difference error has an interior ... |                        28437.8 |                             10 | PASS
+layer2_fd          | SLS_09 tol 0.0001: forward-difference error has an interior... |                         287.11 |                             10 | PASS
+layer3_bauerfike   | SLS_00 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                       0.512393 |                              1 | PASS
+layer3_bauerfike   | SLS_00 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_00 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.512303 |                              1 | PASS
+layer3_bauerfike   | SLS_00 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_00 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.512394 |                              1 | PASS
+layer3_bauerfike   | SLS_00 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    6.66134e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_01 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                       0.511388 |                              1 | PASS
+layer3_bauerfike   | SLS_01 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_01 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.511353 |                              1 | PASS
+layer3_bauerfike   | SLS_01 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_01 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.511401 |                              1 | PASS
+layer3_bauerfike   | SLS_01 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_02 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                       0.511909 |                              1 | PASS
+layer3_bauerfike   | SLS_02 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_02 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.511788 |                              1 | PASS
+layer3_bauerfike   | SLS_02 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_02 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.511996 |                              1 | PASS
+layer3_bauerfike   | SLS_02 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_03 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                       0.513386 |                              1 | PASS
+layer3_bauerfike   | SLS_03 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_03 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.513427 |                              1 | PASS
+layer3_bauerfike   | SLS_03 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_03 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.513406 |                              1 | PASS
+layer3_bauerfike   | SLS_03 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_04 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                       0.517196 |                              1 | PASS
+layer3_bauerfike   | SLS_04 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_04 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.517215 |                              1 | PASS
+layer3_bauerfike   | SLS_04 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_04 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.517036 |                              1 | PASS
+layer3_bauerfike   | SLS_04 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_05 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                       0.524055 |                              1 | PASS
+layer3_bauerfike   | SLS_05 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_05 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.524064 |                              1 | PASS
+layer3_bauerfike   | SLS_05 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_05 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.524065 |                              1 | PASS
+layer3_bauerfike   | SLS_05 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_06 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                       0.529623 |                              1 | PASS
+layer3_bauerfike   | SLS_06 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_06 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.529567 |                              1 | PASS
+layer3_bauerfike   | SLS_06 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_06 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.529647 |                              1 | PASS
+layer3_bauerfike   | SLS_06 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_07 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                       0.532446 |                              1 | PASS
+layer3_bauerfike   | SLS_07 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_07 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.532429 |                              1 | PASS
+layer3_bauerfike   | SLS_07 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_07 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.532432 |                              1 | PASS
+layer3_bauerfike   | SLS_07 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_08 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                       0.529008 |                              1 | PASS
+layer3_bauerfike   | SLS_08 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_08 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.528988 |                              1 | PASS
+layer3_bauerfike   | SLS_08 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_08 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.529022 |                              1 | PASS
+layer3_bauerfike   | SLS_08 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_09 seed 20261114 Bauer-Fike bound holds (worst shift / ... |                         0.5318 |                              1 | PASS
+layer3_bauerfike   | SLS_09 seed 20261114 own batch eigenvalues vs numpy (abs)      |                    1.77636e-15 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_09 seed 20261115 Bauer-Fike bound holds (worst shift / ... |                       0.531861 |                              1 | PASS
+layer3_bauerfike   | SLS_09 seed 20261115 own batch eigenvalues vs numpy (abs)      |                    1.77636e-15 |                          1e-10 | PASS
+layer3_bauerfike   | SLS_09 seed 20261116 Bauer-Fike bound holds (worst shift / ... |                       0.531814 |                              1 | PASS
+layer3_bauerfike   | SLS_09 seed 20261116 own batch eigenvalues vs numpy (abs)      |                    1.77636e-15 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_00 seed 20261114 Bauer-Fike bound holds (worst shift... |                       0.530239 |                              1 | PASS
+layer3_bauerfike   | CRUISE_00 seed 20261114 own batch eigenvalues vs numpy (abs)   |                    2.22045e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_00 seed 20261115 Bauer-Fike bound holds (worst shift... |                       0.530254 |                              1 | PASS
+layer3_bauerfike   | CRUISE_00 seed 20261115 own batch eigenvalues vs numpy (abs)   |                    2.22045e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_00 seed 20261116 Bauer-Fike bound holds (worst shift... |                       0.530255 |                              1 | PASS
+layer3_bauerfike   | CRUISE_00 seed 20261116 own batch eigenvalues vs numpy (abs)   |                    2.22045e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_01 seed 20261114 Bauer-Fike bound holds (worst shift... |                       0.518557 |                              1 | PASS
+layer3_bauerfike   | CRUISE_01 seed 20261114 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_01 seed 20261115 Bauer-Fike bound holds (worst shift... |                       0.518548 |                              1 | PASS
+layer3_bauerfike   | CRUISE_01 seed 20261115 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_01 seed 20261116 Bauer-Fike bound holds (worst shift... |                       0.518564 |                              1 | PASS
+layer3_bauerfike   | CRUISE_01 seed 20261116 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_02 seed 20261114 Bauer-Fike bound holds (worst shift... |                       0.521855 |                              1 | PASS
+layer3_bauerfike   | CRUISE_02 seed 20261114 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_02 seed 20261115 Bauer-Fike bound holds (worst shift... |                       0.521853 |                              1 | PASS
+layer3_bauerfike   | CRUISE_02 seed 20261115 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_02 seed 20261116 Bauer-Fike bound holds (worst shift... |                       0.521783 |                              1 | PASS
+layer3_bauerfike   | CRUISE_02 seed 20261116 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_03 seed 20261114 Bauer-Fike bound holds (worst shift... |                        0.52732 |                              1 | PASS
+layer3_bauerfike   | CRUISE_03 seed 20261114 own batch eigenvalues vs numpy (abs)   |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_03 seed 20261115 Bauer-Fike bound holds (worst shift... |                       0.527314 |                              1 | PASS
+layer3_bauerfike   | CRUISE_03 seed 20261115 own batch eigenvalues vs numpy (abs)   |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_03 seed 20261116 Bauer-Fike bound holds (worst shift... |                       0.527303 |                              1 | PASS
+layer3_bauerfike   | CRUISE_03 seed 20261116 own batch eigenvalues vs numpy (abs)   |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_04 seed 20261114 Bauer-Fike bound holds (worst shift... |                       0.540354 |                              1 | PASS
+layer3_bauerfike   | CRUISE_04 seed 20261114 own batch eigenvalues vs numpy (abs)   |                    6.66134e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_04 seed 20261115 Bauer-Fike bound holds (worst shift... |                       0.540403 |                              1 | PASS
+layer3_bauerfike   | CRUISE_04 seed 20261115 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_04 seed 20261116 Bauer-Fike bound holds (worst shift... |                       0.540386 |                              1 | PASS
+layer3_bauerfike   | CRUISE_04 seed 20261116 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_05 seed 20261114 Bauer-Fike bound holds (worst shift... |                       0.556758 |                              1 | PASS
+layer3_bauerfike   | CRUISE_05 seed 20261114 own batch eigenvalues vs numpy (abs)   |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_05 seed 20261115 Bauer-Fike bound holds (worst shift... |                       0.556879 |                              1 | PASS
+layer3_bauerfike   | CRUISE_05 seed 20261115 own batch eigenvalues vs numpy (abs)   |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_05 seed 20261116 Bauer-Fike bound holds (worst shift... |                       0.556876 |                              1 | PASS
+layer3_bauerfike   | CRUISE_05 seed 20261116 own batch eigenvalues vs numpy (abs)   |                    8.88178e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_06 seed 20261114 Bauer-Fike bound holds (worst shift... |                       0.537207 |                              1 | PASS
+layer3_bauerfike   | CRUISE_06 seed 20261114 own batch eigenvalues vs numpy (abs)   |                    6.66134e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_06 seed 20261115 Bauer-Fike bound holds (worst shift... |                       0.537162 |                              1 | PASS
+layer3_bauerfike   | CRUISE_06 seed 20261115 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_06 seed 20261116 Bauer-Fike bound holds (worst shift... |                       0.537177 |                              1 | PASS
+layer3_bauerfike   | CRUISE_06 seed 20261116 own batch eigenvalues vs numpy (abs)   |                    4.44089e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_07 seed 20261114 Bauer-Fike bound holds (worst shift... |                       0.522246 |                              1 | PASS
+layer3_bauerfike   | CRUISE_07 seed 20261114 own batch eigenvalues vs numpy (abs)   |                    5.18682e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_07 seed 20261115 Bauer-Fike bound holds (worst shift... |                       0.519129 |                              1 | PASS
+layer3_bauerfike   | CRUISE_07 seed 20261115 own batch eigenvalues vs numpy (abs)   |                    4.53197e-16 |                          1e-10 | PASS
+layer3_bauerfike   | CRUISE_07 seed 20261116 Bauer-Fike bound holds (worst shift... |                       0.522936 |                              1 | PASS
+layer3_bauerfike   | CRUISE_07 seed 20261116 own batch eigenvalues vs numpy (abs)   |                    6.37945e-16 |                          1e-10 | PASS
+layer4_degradation | SLS_00 same_fuel fan_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel fan_eff: steady residuals and stability       |                    8.82224e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel fan_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel fan_flow: steady residuals and stability      |                    3.71233e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel lpc_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel lpc_eff: steady residuals and stability       |                    7.27512e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel lpc_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel lpc_flow: steady residuals and stability      |                    5.88251e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel hpc_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel hpc_eff: steady residuals and stability       |                     3.0502e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel hpc_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel hpc_flow: steady residuals and stability      |                    4.64001e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel hpt_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel hpt_eff: steady residuals and stability       |                     7.1368e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel hpt_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel hpt_flow: steady residuals and stability      |                    3.66679e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel lpt_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel lpt_eff: steady residuals and stability       |                    4.73764e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel lpt_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel lpt_flow: steady residuals and stability      |                    4.76307e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fuel combined: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fuel combined: steady residuals and stability      |                    6.80964e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan fan_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan fan_eff: steady residuals and stability        |                    4.30116e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan fan_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan fan_flow: steady residuals and stability       |                    3.80878e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan lpc_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan lpc_eff: steady residuals and stability        |                    2.52573e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan lpc_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan lpc_flow: steady residuals and stability       |                    9.63556e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan hpc_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan hpc_eff: steady residuals and stability        |                    4.03309e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan hpc_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan hpc_flow: steady residuals and stability       |                    2.42066e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan hpt_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan hpt_eff: steady residuals and stability        |                    3.63119e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan hpt_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan hpt_flow: steady residuals and stability       |                    1.83197e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan lpt_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan lpt_eff: steady residuals and stability        |                     5.1472e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan lpt_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan lpt_flow: steady residuals and stability       |                    9.20238e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_00 same_fan combined: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_00 same_fan combined: steady residuals and stability       |                    6.39881e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel fan_eff: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel fan_eff: steady residuals and stability    |                    1.94943e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel fan_flow: every level 0..5% trimmed and... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel fan_flow: steady residuals and stability   |                    9.66763e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel lpc_eff: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel lpc_eff: steady residuals and stability    |                    1.41852e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel lpc_flow: every level 0..5% trimmed and... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel lpc_flow: steady residuals and stability   |                    6.26288e-14 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel hpc_eff: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel hpc_eff: steady residuals and stability    |                    7.64583e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel hpc_flow: every level 0..5% trimmed and... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel hpc_flow: steady residuals and stability   |                    7.25526e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel hpt_eff: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel hpt_eff: steady residuals and stability    |                    9.89058e-15 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel hpt_flow: every level 0..5% trimmed and... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel hpt_flow: steady residuals and stability   |                     9.0839e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel lpt_eff: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel lpt_eff: steady residuals and stability    |                    1.91334e-14 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel lpt_flow: every level 0..5% trimmed and... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel lpt_flow: steady residuals and stability   |                    9.69072e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fuel combined: every level 0..5% trimmed and... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fuel combined: steady residuals and stability   |                    1.19701e-14 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan fan_eff: every level 0..5% trimmed and l... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan fan_eff: steady residuals and stability     |                    7.43991e-14 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan fan_flow: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan fan_flow: steady residuals and stability    |                    3.20534e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan lpc_eff: every level 0..5% trimmed and l... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan lpc_eff: steady residuals and stability     |                    3.08548e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan lpc_flow: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan lpc_flow: steady residuals and stability    |                    7.40224e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan hpc_eff: every level 0..5% trimmed and l... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan hpc_eff: steady residuals and stability     |                    5.40643e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan hpc_flow: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan hpc_flow: steady residuals and stability    |                    9.71974e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan hpt_eff: every level 0..5% trimmed and l... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan hpt_eff: steady residuals and stability     |                    2.26617e-14 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan hpt_flow: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan hpt_flow: steady residuals and stability    |                    9.43557e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan lpt_eff: every level 0..5% trimmed and l... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan lpt_eff: steady residuals and stability     |                    1.52915e-14 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan lpt_flow: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan lpt_flow: steady residuals and stability    |                     5.8729e-13 |                          1e-08 | PASS
+layer4_degradation | CRUISE_07 same_fan combined: every level 0..5% trimmed and ... |                              6 |                              6 | PASS
+layer4_degradation | CRUISE_07 same_fan combined: steady residuals and stability    |                    2.66139e-14 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel fan_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel fan_eff: steady residuals and stability       |                    4.67505e-14 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel fan_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel fan_flow: steady residuals and stability      |                    1.10428e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel lpc_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel lpc_eff: steady residuals and stability       |                    8.49078e-14 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel lpc_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel lpc_flow: steady residuals and stability      |                    3.20034e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel hpc_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel hpc_eff: steady residuals and stability       |                    9.96987e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel hpc_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel hpc_flow: steady residuals and stability      |                     2.3546e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel hpt_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel hpt_eff: steady residuals and stability       |                    3.85204e-14 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel hpt_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel hpt_flow: steady residuals and stability      |                    1.62281e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel lpt_eff: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel lpt_eff: steady residuals and stability       |                    2.37245e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel lpt_flow: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel lpt_flow: steady residuals and stability      |                    8.97145e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fuel combined: every level 0..5% trimmed and li... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fuel combined: steady residuals and stability      |                    6.50897e-14 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan fan_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan fan_eff: steady residuals and stability        |                     5.1253e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan fan_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan fan_flow: steady residuals and stability       |                     3.2255e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan lpc_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan lpc_eff: steady residuals and stability        |                    4.26584e-14 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan lpc_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan lpc_flow: steady residuals and stability       |                    2.44062e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan hpc_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan hpc_eff: steady residuals and stability        |                    1.96505e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan hpc_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan hpc_flow: steady residuals and stability       |                    1.89541e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan hpt_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan hpt_eff: steady residuals and stability        |                    7.87285e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan hpt_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan hpt_flow: steady residuals and stability       |                    2.27458e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan lpt_eff: every level 0..5% trimmed and line... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan lpt_eff: steady residuals and stability        |                    6.01042e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan lpt_flow: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan lpt_flow: steady residuals and stability       |                    7.44795e-13 |                          1e-08 | PASS
+layer4_degradation | SLS_09 same_fan combined: every level 0..5% trimmed and lin... |                              6 |                              6 | PASS
+layer4_degradation | SLS_09 same_fan combined: steady residuals and stability       |                     8.3607e-14 |                          1e-08 | PASS
+steps              | SLS_00 step response: own diagonalization vs expm (rel)        |                    6.33411e-16 |                          1e-08 | PASS
+steps              | SLS_00 step response: own vs solve_ivp (rel)                   |                    4.19762e-12 |                          1e-08 | PASS
+steps              | SLS_00 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                    5.76774e-15 |                          1e-08 | PASS
+steps              | SLS_00 own 2x2 inverse vs numpy.linalg.solve (rel)             |                    1.04868e-16 |                          1e-08 | PASS
+steps              | SLS_00 Gauss-Seidel spectral radius < 1                        |                       0.103821 |                              1 | PASS
+steps              | SLS_01 step response: own diagonalization vs expm (rel)        |                    1.56492e-15 |                          1e-08 | PASS
+steps              | SLS_01 step response: own vs solve_ivp (rel)                   |                    3.68842e-12 |                          1e-08 | PASS
+steps              | SLS_01 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                    6.41499e-15 |                          1e-08 | PASS
+steps              | SLS_01 own 2x2 inverse vs numpy.linalg.solve (rel)             |                              0 |                          1e-08 | PASS
+steps              | SLS_01 Gauss-Seidel spectral radius < 1                        |                       0.170105 |                              1 | PASS
+steps              | SLS_02 step response: own diagonalization vs expm (rel)        |                    1.90763e-15 |                          1e-08 | PASS
+steps              | SLS_02 step response: own vs solve_ivp (rel)                   |                     3.6212e-12 |                          1e-08 | PASS
+steps              | SLS_02 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                    8.79082e-15 |                          1e-08 | PASS
+steps              | SLS_02 own 2x2 inverse vs numpy.linalg.solve (rel)             |                    1.72369e-16 |                          1e-08 | PASS
+steps              | SLS_02 Gauss-Seidel spectral radius < 1                        |                       0.155726 |                              1 | PASS
+steps              | SLS_03 step response: own diagonalization vs expm (rel)        |                    1.78962e-15 |                          1e-08 | PASS
+steps              | SLS_03 step response: own vs solve_ivp (rel)                   |                    3.90755e-12 |                          1e-08 | PASS
+steps              | SLS_03 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                    4.20578e-15 |                          1e-08 | PASS
+steps              | SLS_03 own 2x2 inverse vs numpy.linalg.solve (rel)             |                              0 |                          1e-08 | PASS
+steps              | SLS_03 Gauss-Seidel spectral radius < 1                        |                       0.165188 |                              1 | PASS
+steps              | SLS_04 step response: own diagonalization vs expm (rel)        |                    2.40058e-15 |                          1e-08 | PASS
+steps              | SLS_04 step response: own vs solve_ivp (rel)                   |                     4.3537e-12 |                          1e-08 | PASS
+steps              | SLS_04 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                    2.38724e-15 |                          1e-08 | PASS
+steps              | SLS_04 own 2x2 inverse vs numpy.linalg.solve (rel)             |                    1.59149e-16 |                          1e-08 | PASS
+steps              | SLS_04 Gauss-Seidel spectral radius < 1                        |                       0.175507 |                              1 | PASS
+steps              | SLS_05 step response: own diagonalization vs expm (rel)        |                    1.92394e-15 |                          1e-08 | PASS
+steps              | SLS_05 step response: own vs solve_ivp (rel)                   |                    4.06609e-12 |                          1e-08 | PASS
+steps              | SLS_05 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                    1.91331e-15 |                          1e-08 | PASS
+steps              | SLS_05 own 2x2 inverse vs numpy.linalg.solve (rel)             |                    1.59443e-16 |                          1e-08 | PASS
+steps              | SLS_05 Gauss-Seidel spectral radius < 1                        |                       0.190752 |                              1 | PASS
+steps              | SLS_06 step response: own diagonalization vs expm (rel)        |                    2.25001e-15 |                          1e-08 | PASS
+steps              | SLS_06 step response: own vs solve_ivp (rel)                   |                    4.56366e-12 |                          1e-08 | PASS
+steps              | SLS_06 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                    8.95239e-15 |                          1e-08 | PASS
+steps              | SLS_06 own 2x2 inverse vs numpy.linalg.solve (rel)             |                    1.59864e-16 |                          1e-08 | PASS
+steps              | SLS_06 Gauss-Seidel spectral radius < 1                        |                       0.188576 |                              1 | PASS
+steps              | SLS_07 step response: own diagonalization vs expm (rel)        |                    2.38309e-15 |                          1e-08 | PASS
+steps              | SLS_07 step response: own vs solve_ivp (rel)                   |                    4.34025e-12 |                          1e-08 | PASS
+steps              | SLS_07 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                     2.8455e-15 |                          1e-08 | PASS
+steps              | SLS_07 own 2x2 inverse vs numpy.linalg.solve (rel)             |                    1.58084e-16 |                          1e-08 | PASS
+steps              | SLS_07 Gauss-Seidel spectral radius < 1                        |                       0.161326 |                              1 | PASS
+steps              | SLS_08 step response: own diagonalization vs expm (rel)        |                    3.70563e-15 |                          1e-08 | PASS
+steps              | SLS_08 step response: own vs solve_ivp (rel)                   |                    3.61515e-12 |                          1e-08 | PASS
+steps              | SLS_08 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                    1.84459e-15 |                          1e-08 | PASS
+steps              | SLS_08 own 2x2 inverse vs numpy.linalg.solve (rel)             |                    1.53716e-16 |                          1e-08 | PASS
+steps              | SLS_08 Gauss-Seidel spectral radius < 1                        |                       0.108907 |                              1 | PASS
+steps              | SLS_09 step response: own diagonalization vs expm (rel)        |                     4.0925e-15 |                          1e-08 | PASS
+steps              | SLS_09 step response: own vs solve_ivp (rel)                   |                     3.8277e-12 |                          1e-08 | PASS
+steps              | SLS_09 Gauss-Seidel converged, matches direct -A^-1 B du (rel) |                      4.508e-16 |                          1e-08 | PASS
+steps              | SLS_09 own 2x2 inverse vs numpy.linalg.solve (rel)             |                    1.50267e-16 |                          1e-08 | PASS
+steps              | SLS_09 Gauss-Seidel spectral radius < 1                        |                       0.100605 |                              1 | PASS
+steps              | CRUISE_00 step response: own diagonalization vs expm (rel)     |                    6.15347e-16 |                          1e-08 | PASS
+steps              | CRUISE_00 step response: own vs solve_ivp (rel)                |                    4.19734e-12 |                          1e-08 | PASS
+steps              | CRUISE_00 Gauss-Seidel converged, matches direct -A^-1 B du... |                    1.34458e-15 |                          1e-08 | PASS
+steps              | CRUISE_00 own 2x2 inverse vs numpy.linalg.solve (rel)          |                    6.11172e-17 |                          1e-08 | PASS
+steps              | CRUISE_00 Gauss-Seidel spectral radius < 1                     |                      0.0946752 |                              1 | PASS
+steps              | CRUISE_01 step response: own diagonalization vs expm (rel)     |                    8.37332e-16 |                          1e-08 | PASS
+steps              | CRUISE_01 step response: own vs solve_ivp (rel)                |                     4.3733e-12 |                          1e-08 | PASS
+steps              | CRUISE_01 Gauss-Seidel converged, matches direct -A^-1 B du... |                    6.57258e-15 |                          1e-08 | PASS
+steps              | CRUISE_01 own 2x2 inverse vs numpy.linalg.solve (rel)          |                    8.31972e-17 |                          1e-08 | PASS
+steps              | CRUISE_01 Gauss-Seidel spectral radius < 1                     |                       0.203105 |                              1 | PASS
+steps              | CRUISE_02 step response: own diagonalization vs expm (rel)     |                     1.2181e-15 |                          1e-08 | PASS
+steps              | CRUISE_02 step response: own vs solve_ivp (rel)                |                    3.75612e-12 |                          1e-08 | PASS
+steps              | CRUISE_02 Gauss-Seidel converged, matches direct -A^-1 B du... |                      2.421e-15 |                          1e-08 | PASS
+steps              | CRUISE_02 own 2x2 inverse vs numpy.linalg.solve (rel)          |                      1.614e-16 |                          1e-08 | PASS
+steps              | CRUISE_02 Gauss-Seidel spectral radius < 1                     |                       0.193939 |                              1 | PASS
+steps              | CRUISE_03 step response: own diagonalization vs expm (rel)     |                    1.36677e-15 |                          1e-08 | PASS
+steps              | CRUISE_03 step response: own vs solve_ivp (rel)                |                    4.07202e-12 |                          1e-08 | PASS
+steps              | CRUISE_03 Gauss-Seidel converged, matches direct -A^-1 B du... |                    9.90916e-15 |                          1e-08 | PASS
+steps              | CRUISE_03 own 2x2 inverse vs numpy.linalg.solve (rel)          |                    1.59825e-16 |                          1e-08 | PASS
+steps              | CRUISE_03 Gauss-Seidel spectral radius < 1                     |                       0.206765 |                              1 | PASS
+steps              | CRUISE_04 step response: own diagonalization vs expm (rel)     |                    2.15258e-15 |                          1e-08 | PASS
+steps              | CRUISE_04 step response: own vs solve_ivp (rel)                |                    4.38249e-12 |                          1e-08 | PASS
+steps              | CRUISE_04 Gauss-Seidel converged, matches direct -A^-1 B du... |                    8.39614e-15 |                          1e-08 | PASS
+steps              | CRUISE_04 own 2x2 inverse vs numpy.linalg.solve (rel)          |                     1.6463e-16 |                          1e-08 | PASS
+steps              | CRUISE_04 Gauss-Seidel spectral radius < 1                     |                       0.221072 |                              1 | PASS
+steps              | CRUISE_05 step response: own diagonalization vs expm (rel)     |                    2.34113e-15 |                          1e-08 | PASS
+steps              | CRUISE_05 step response: own vs solve_ivp (rel)                |                    4.58662e-12 |                          1e-08 | PASS
+steps              | CRUISE_05 Gauss-Seidel converged, matches direct -A^-1 B du... |                    7.15233e-15 |                          1e-08 | PASS
+steps              | CRUISE_05 own 2x2 inverse vs numpy.linalg.solve (rel)          |                    1.66333e-16 |                          1e-08 | PASS
+steps              | CRUISE_05 Gauss-Seidel spectral radius < 1                     |                       0.187706 |                              1 | PASS
+steps              | CRUISE_06 step response: own diagonalization vs expm (rel)     |                     4.2461e-15 |                          1e-08 | PASS
+steps              | CRUISE_06 step response: own vs solve_ivp (rel)                |                    3.09116e-12 |                          1e-08 | PASS
+steps              | CRUISE_06 Gauss-Seidel converged, matches direct -A^-1 B du... |                    2.11361e-15 |                          1e-08 | PASS
+steps              | CRUISE_06 own 2x2 inverse vs numpy.linalg.solve (rel)          |                              0 |                          1e-08 | PASS
+steps              | CRUISE_06 Gauss-Seidel spectral radius < 1                     |                      0.0657551 |                              1 | PASS
+steps              | CRUISE_07 step response: own diagonalization vs expm (rel)     |                    4.15709e-15 |                          1e-08 | PASS
+steps              | CRUISE_07 step response: own vs solve_ivp (rel)                |                    1.88316e-12 |                          1e-08 | PASS
+steps              | CRUISE_07 Gauss-Seidel converged, matches direct -A^-1 B du... |                    4.69753e-16 |                          1e-08 | PASS
+steps              | CRUISE_07 own 2x2 inverse vs numpy.linalg.solve (rel)          |                    9.39507e-17 |                          1e-08 | PASS
+steps              | CRUISE_07 Gauss-Seidel spectral radius < 1                     |                      0.0625455 |                              1 | PASS
+steps              | ANCHOR_CRUISE step response: own diagonalization vs expm (rel) |                    4.93365e-15 |                          1e-08 | PASS
+steps              | ANCHOR_CRUISE step response: own vs solve_ivp (rel)            |                    1.87137e-12 |                          1e-08 | PASS
+steps              | ANCHOR_CRUISE Gauss-Seidel converged, matches direct -A^-1 ... |                    3.77424e-16 |                          1e-08 | PASS
+steps              | ANCHOR_CRUISE own 2x2 inverse vs numpy.linalg.solve (rel)      |                    1.88712e-16 |                          1e-08 | PASS
+steps              | ANCHOR_CRUISE Gauss-Seidel spectral radius < 1                 |                      0.0618346 |                              1 | PASS
+steps              | ANCHOR_TAKEOFF step response: own diagonalization vs expm (... |                    3.99489e-15 |                          1e-08 | PASS
+steps              | ANCHOR_TAKEOFF step response: own vs solve_ivp (rel)           |                    3.28291e-12 |                          1e-08 | PASS
+steps              | ANCHOR_TAKEOFF Gauss-Seidel converged, matches direct -A^-1... |                     3.0802e-15 |                          1e-08 | PASS
+steps              | ANCHOR_TAKEOFF own 2x2 inverse vs numpy.linalg.solve (rel)     |                              0 |                          1e-08 | PASS
+steps              | ANCHOR_TAKEOFF Gauss-Seidel spectral radius < 1                |                      0.0970457 |                              1 | PASS
+validation         | cruise W_in vs NASA Table 1 (815.59 vs 813): |rel err| <= 1... |                     0.00318021 |                       0.010615 | PASS
+validation         | cruise TSFC vs NASA Table 1 (0.46222 vs 0.4637): |rel err| ... |                     0.00318348 |                      0.0101078 | PASS
+validation         | cruise BPR vs NASA Table 1 (23.999 vs 24): |rel err| <= 1% ... |                    6.11663e-05 |                      0.0308333 | PASS
+validation         | cruise OPR vs NASA Table 1 (55.033 vs 55): |rel err| <= 1% ... |                    0.000592795 |                      0.0190909 | PASS
+validation         | cruise T4 vs NASA Table 1 (3162.5 vs 3150): |rel err| <= 1%... |                     0.00397693 |                      0.0101587 | PASS
+validation         | cruise Fnet vs NASA Table 1 (6086.2 vs 6073): |rel err| <= ... |                     0.00216677 |                      0.0100823 | PASS
+validation         | cruise steady state converged (max residual)                   |                    3.43076e-13 |                          1e-06 | PASS
+validation         | cruise shaft speeds within 1% of NASA's own trim (setup_Inp... |                     0.00300072 |                           0.01 | PASS
+validation         | takeoff W_in vs NASA Table 1 (1723.7 vs 1724): |rel err| <=... |                    0.000186204 |                        0.01029 | PASS
+validation         | takeoff TSFC vs NASA Table 1 (0.17464 vs 0.1751): |rel err|... |                     0.00265514 |                      0.0102856 | PASS
+validation         | takeoff BPR vs NASA Table 1 (27.586 vs 28): |rel err| <= 1%... |                      0.0147686 |                      0.0278571 | PASS
+validation         | takeoff OPR vs NASA Table 1 (36.639 vs 37): |rel err| <= 1%... |                     0.00976434 |                      0.0235135 | PASS
+validation         | takeoff T4 vs NASA Table 1 (3191.3 vs 3170): |rel err| <= 1... |                     0.00673424 |                      0.0101577 | PASS
+validation         | takeoff Fnet vs NASA Table 1 (28632 vs 28622): |rel err| <=... |                    0.000364844 |                      0.0100175 | PASS
+validation         | takeoff steady state converged (max residual)                  |                    3.31969e-13 |                          1e-06 | PASS
+validation         | takeoff shaft speeds within 1% of NASA's own trim (setup_In... |                     0.00123307 |                           0.01 | PASS
+validation         | study-mode engine (C1 maps, tight loops) within 1% of the f... |                     0.00267739 |                           0.01 | PASS
+validation         | Gate 1: port vs blind replica agree (worst rel. disagreement)  |                      8.453e-13 |                          1e-06 | PASS
+validity           | SLS_00 linear vs nonlinear agree for a 1% fuel step (max re... |                     0.00549116 |                           0.02 | PASS
+validity           | CRUISE_07 linear vs nonlinear agree for a 1% fuel step (max... |                      0.0111295 |                           0.02 | PASS
+validity           | SLS_09 linear vs nonlinear agree for a 1% fuel step (max re... |                     0.00458039 |                           0.02 | PASS
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+522 passed, 0 failed
+
+HYPOTHESIS VERDICTS  (written by code from numbers; rule stored in the JSON)
+  H1_slower_at_low_power: supported   [layer1_opmap]
+      rule: supported if, in BOTH the SLS and the cruise sweep, Spearman rank correlation(power, tau_slow) < -0.7 AND tau_slow(idle)/tau_slow(max) > 1.5; not supported if the ratio < 1 in both; otherwise mixed
+  H2_idle_most_fragile: not supported   [layer3_bauerfike]
+      rule: over all SLS and cruise operating points (normalized A_n, ||E||_2 = 1e-3): supported if the point with the largest tau_slow is also the point with the largest worst-case eigenvalue shift for every Monte Carlo seed; not supported if it is not for any seed; otherwise mixed
+  H3_best_h_shifts_with_tol: not supported   [layer2_fd]
+      rule: the hypothesis has two parts, (a) the best forward step moves with tol (>= 10x from tol=1e-13 to tol=1e-6 at every Layer-2 point) and (b) at tol=1e-6 it lies near 1e-3 (within a factor 3.5). supported = (a) and (b) hold for both inner-solver starts; not supported = (b) fails at EVERY point for both starts, or (a) fails everywhere; otherwise mixed
+  H4_degradation_direction: mixed   [layer4_degradation]
+      rule: combined degradation (all 10 health parameters reduced together) at the largest converged level: supported if tau_slow increases at every Layer-4 point under BOTH comparison rules; not supported if it decreases everywhere; otherwise mixed

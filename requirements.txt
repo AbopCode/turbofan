@@ -1,0 +1,13 @@
+# The Eigenvalue Map of a Turbofan Engine - Python dependencies
+# Python 3.13 (also runs on 3.12). Loose lower bounds only; no network is needed at run time.
+numpy>=1.26
+scipy>=1.11
+pandas>=2.1
+matplotlib>=3.8
+openpyxl>=3.1
+sympy>=1.12
+plotly>=5.18
+dash>=2.14
+# Optional: only needed to open the N-CMAPSS .h5 files fetched by `./run.sh fetch-data`.
+# The study itself never uses it.
+# h5py>=3.10

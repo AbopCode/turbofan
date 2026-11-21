@@ -1,0 +1,16 @@
+point,label,fuel_step_pct,max_err_pct,err_N_LP_pct,err_N_HP_pct
+SLS_00,SLS idle (Nc_fan 892 rpm),1,0.549116,0.549116,0.507557
+SLS_00,SLS idle (Nc_fan 892 rpm),3,1.49055,1.47219,1.49055
+SLS_00,SLS idle (Nc_fan 892 rpm),10,4.62906,3.3787,4.62906
+SLS_00,SLS idle (Nc_fan 892 rpm),25,9.84902,5.05993,9.84902
+CRUISE_07,35k ft / M0.8 max cruise (Nc_fan 2360 rpm),1,1.11295,0.662244,1.11295
+CRUISE_07,35k ft / M0.8 max cruise (Nc_fan 2360 rpm),3,3.21373,1.86721,3.21373
+CRUISE_07,35k ft / M0.8 max cruise (Nc_fan 2360 rpm),10,9.4198,6.01649,9.4198
+CRUISE_07,35k ft / M0.8 max cruise (Nc_fan 2360 rpm),25,13.2073,13.2073,12.1261
+SLS_09,SLS max power (Nc_fan 1912 rpm),1,0.458039,0.379975,0.458039
+SLS_09,SLS max power (Nc_fan 1912 rpm),3,1.33304,1.13724,1.33304
+SLS_09,SLS max power (Nc_fan 1912 rpm),10,3.9941,3.9941,3.81735
+SLS_09,SLS max power (Nc_fan 1912 rpm),25,10.4963,10.4963,6.02531
+SLS_00,valid range (error <= 2 % / 5 %),3,10,,
+CRUISE_07,valid range (error <= 2 % / 5 %),1,3,,
+SLS_09,valid range (error <= 2 % / 5 %),3,10,,
